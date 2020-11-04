@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Layout } from '#/constants';
+import { Layout, Colors } from '#/constants';
 
 export const Button = styled(LinearGradient)`
   width: ${Layout.normalize(60)}px;
@@ -12,5 +12,5 @@ export const Button = styled(LinearGradient)`
 
 export const Label = styled.Text`
   font-size: 12px;
-  color: ${(props) => (props.focused ? '#000' : '#fff')};
+  color: ${(props) => (props.focused ? Colors.blackColor : Colors.whiteColor)};
 `;
