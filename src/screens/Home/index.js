@@ -1,23 +1,38 @@
-/* eslint-disable react/style-prop-object */
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import ScreenContainer from '#/containers/ScreenContainer';
+import { Colors } from '#/constants';
+import { Icon, Suggestions, Activities } from '#/components';
+import { BalanceContainer, BalanceTitle, Balance } from './StyledComponents';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import suggestionsMockData from '#/mock/suggestions';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Text>Home!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ScreenContainer
+      headerComponent={() => (
+        <>
+          <Icon
+            iconSet="material_community"
+            name="qrcode-scan"
+            size="30"
+            color={Colors.secondaryGreenColor}
+          />
+          <BalanceContainer>
+            <BalanceTitle>Meu saldo</BalanceTitle>
+            <Balance>R$ 0,00</Balance>
+          </BalanceContainer>
+          <Icon
+            iconSet="antd"
+            name="gift"
+            size="30"
+            color={Colors.secondaryGreenColor}
+          />
+        </>
+      )}
+    >
+      <Suggestions data={suggestionsMockData} />
+      <Activities />
+    </ScreenContainer>
   );
 };
 
