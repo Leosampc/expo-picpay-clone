@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Colors } from '#/constants';
 import { PayButton, Icon } from '#/components';
 
 import HomeScreen from '#/screens/Home';
@@ -49,11 +50,11 @@ const Navigation = () => (
       })}
       tabBarOptions={{
         style: {
-          backgroundColor: '#131418',
+          backgroundColor: Colors.fourtyGrayColor,
           borderTopColor: 'rbga(255, 255, 255, 0.2)',
         },
-        activeTintColor: '#fff',
-        inactiveTintColor: '#92929c',
+        activeTintColor: Colors.whiteColor,
+        inactiveTintColor: Colors.secondaryGrayColor,
       }}
     >
       <BottomTab.Screen
