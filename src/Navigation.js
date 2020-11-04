@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, AntDesign } from '@expo/vector-icons';
-import { PayButton } from '#/components';
+import { PayButton, Icon } from '#/components';
 
 import HomeScreen from '#/screens/Home';
 import WalletScreen from '#/screens/Wallet';
@@ -14,19 +13,15 @@ const BottomTab = createBottomTabNavigator();
 
 const icons = {
   Home: {
-    lib: AntDesign,
     name: 'home',
   },
   Wallet: {
-    lib: AntDesign,
     name: 'creditcard',
   },
   Notifications: {
-    lib: Ionicons,
     name: 'ios-notifications-outline',
   },
   Settings: {
-    lib: AntDesign,
     name: 'setting',
   },
 };
@@ -44,9 +39,12 @@ const Navigation = () => (
               />
             );
 
-          const { lib: Icon, name } = icons[route.name];
+          const { name } = icons[route.name];
+          const iconSet = route.name === 'Notifications' ? 'ion' : 'antd';
 
-          return <Icon name={name} color={color} size={size} />;
+          return (
+            <Icon iconSet={iconSet} name={name} color={color} size={size} />
+          );
         },
       })}
       tabBarOptions={{
