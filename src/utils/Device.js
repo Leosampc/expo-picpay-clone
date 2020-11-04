@@ -1,7 +1,4 @@
 import { Dimensions, Platform } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
-
-export const isSimulator = DeviceInfo.isEmulator();
 
 export const isIPhoneX = () => {
   const X_WIDTH = 375;

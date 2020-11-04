@@ -1,19 +1,88 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { PayButton } from '#/components';
 
 import HomeScreen from '#/screens/Home';
 import WalletScreen from '#/screens/Wallet';
 import PayScreen from '#/screens/Pay';
+import NotificationsScreen from '#/screens/Notifications';
+import SettingsScreen from '#/screens/Settings';
 
 const BottomTab = createBottomTabNavigator();
 
+const icons = {
+  Home: {
+    lib: AntDesign,
+    name: 'home',
+  },
+  Wallet: {
+    lib: AntDesign,
+    name: 'creditcard',
+  },
+  Notifications: {
+    lib: Ionicons,
+    name: 'ios-notifications-outline',
+  },
+  Settings: {
+    lib: AntDesign,
+    name: 'setting',
+  },
+};
+
 const Navigation = () => (
   <NavigationContainer>
-    <BottomTab.Navigator>
-      <BottomTab.Screen name="Home" component={HomeScreen} />
-      <BottomTab.Screen name="Wallet" component={WalletScreen} />
-      <BottomTab.Screen name="Pay" component={PayScreen} />
+    <BottomTab.Navigator
+      screenOptions={({ route, navigation }) => ({
+        tabBarIcon: ({ color, size, focused }) => {
+          if (route.name === 'Pay')
+            return (
+              <PayButton
+                onPress={() => navigation.navigate('Pay')}
+                focused={focused}
+              />
+            );
+
+          const { lib: Icon, name } = icons[route.name];
+
+          return <Icon name={name} color={color} size={size} />;
+        },
+      })}
+      tabBarOptions={{
+        style: {
+          backgroundColor: '#131418',
+          borderTopColor: 'rbga(255, 255, 255, 0.2)',
+        },
+        activeTintColor: '#fff',
+        inactiveTintColor: '#92929c',
+      }}
+    >
+      <BottomTab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: 'Início' }}
+      />
+      <BottomTab.Screen
+        name="Wallet"
+        component={WalletScreen}
+        options={{ title: 'Carteira' }}
+      />
+      <BottomTab.Screen
+        name="Pay"
+        component={PayScreen}
+        options={{ title: '' }}
+      />
+      <BottomTab.Screen
+        name="Notifications"
+        component={NotificationsScreen}
+        options={{ title: 'Notificações' }}
+      />
+      <BottomTab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: 'Ajustes' }}
+      />
     </BottomTab.Navigator>
   </NavigationContainer>
 );
