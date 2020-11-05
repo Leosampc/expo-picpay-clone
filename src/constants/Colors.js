@@ -7,6 +7,7 @@ const fourtyGrayColor = '#131418';
 const primaryGreenColor = '#00ac4a';
 const secondaryGreenColor = '#10c86e';
 const tertiaryGreenColor = '#00fc6c';
+const primaryRedColor = '#f75175';
 
 export default {
   blackColor,
@@ -18,4 +19,5 @@ export default {
   primaryGreenColor,
   secondaryGreenColor,
   tertiaryGreenColor,
+  primaryRedColor,
 };
