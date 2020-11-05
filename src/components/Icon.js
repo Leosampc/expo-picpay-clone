@@ -4,6 +4,7 @@ import {
   Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
+  Feather,
 } from '@expo/vector-icons';
 import { Layout } from '#/constants';
 
@@ -20,10 +21,13 @@ const icons = {
   material: {
     lib: MaterialIcons,
   },
+  feather: {
+    lib: Feather,
+  },
 };
 
 export default ({ iconSet, size, ...props }) => {
   const { lib: Icon } = icons[iconSet];
-  const iconSize = Layout.normalize(size);
+  const iconSize = size ? Layout.normalize(size) : null;
   return <Icon {...props} size={iconSize} />;
 };
