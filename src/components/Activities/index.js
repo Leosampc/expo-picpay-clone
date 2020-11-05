@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Animated } from 'react-native';
-import { Layout } from '#/constants';
+import { Layout, Images } from '#/constants';
+import { ActivityCard } from '#/components';
 import {
   Container,
   Header,
@@ -35,6 +36,7 @@ const Activities = () => {
       Number(Layout.normalize(56) * 0.56),
       Number(Layout.normalize(56) * 0.67),
     ],
+    extrapolate: 'clamp',
   });
 
   return (
@@ -54,6 +56,15 @@ const Activities = () => {
           />
         </HeaderTabContainer>
       </Header>
+      <ActivityCard
+        avatar={Images.avatar}
+        username="@joaosalati"
+        name="João Salati"
+        value={18.0}
+        dateText="há 2 dias"
+        commentsCount={0}
+        likesCount={10}
+      />
     </Container>
   );
 };
